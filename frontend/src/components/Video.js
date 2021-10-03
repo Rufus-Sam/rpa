@@ -1,23 +1,24 @@
 import React from 'react'
 import { Card } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 const Video = ({ video }) => {
     return (
         <Card className='my-3 p-3 rounded'>
-            <a href={`/video/${video._id}`}>
+            <Link to={`/video/${video._id}`}>
                 <Card.Img src={video.thumbnail} variant='top'></Card.Img>
-            </a>
+            </Link>
             <Card.Body>
-                <a href={`/video/${video._id}`}>
+                <Link to={`/video/${video._id}`}>
                     <Card.Title as='div'><strong>{video.name}</strong></Card.Title>
-                </a>
+                </Link>
+                <Card.Text as='div'>
+                    <div className='my-3'>{video.date}</div>
+                </Card.Text>
+                <Link to={`${video.link}`} >
+                    <div className='my-3'>Go to video</div>
+                </Link>
             </Card.Body>
-            <Card.Text as='div'>
-                <div className='my-3'>{video.date}</div>
-            </Card.Text>
-            <a href={`${video.link}`} >
-                <div className='my-3'>Go to video</div>
-            </a>
         </Card >
     )
 }

@@ -1,20 +1,29 @@
 import React from 'react'
 import { Container, Nav, Navbar } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap'
 const Header = () => {
     return (
         <header>
             <Navbar bg="dark" variant='dark' expand="lg" collapseOnSelect>
                 <Container>
-                    <Navbar.Brand href="#home">RPA</Navbar.Brand>
+                    <LinkContainer to='/'>
+                        <Navbar.Brand>RPA</Navbar.Brand>
+                    </LinkContainer>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className='me-auto'>
-                            <Nav.Link href="/sunday"><i className='fas fa-bible'>
-                            </i>Sunday Services</Nav.Link>
-                            <Nav.Link href="/sunday"><i className='fas fa-praying-hands'></i>Sister's Prayers</Nav.Link>
+                            <LinkContainer to='/sunday'>
+                                <Nav.Link><i className='fas fa-bible'>
+                                </i>Sunday Services</Nav.Link>
+                            </LinkContainer>
+                            <LinkContainer to='/sister'>
+                                <Nav.Link><i className='fas fa-praying-hands'></i>Sister's Prayers</Nav.Link>
+                            </LinkContainer>
                         </Nav>
                         <Nav className="ms-auto">
-                            <Nav.Link href="/login"><i className='fas fa-user'></i>Sign In</Nav.Link>
+                            <LinkContainer to='/login'>
+                                <Nav.Link ><i className='fas fa-user'></i>Sign In</Nav.Link>
+                            </LinkContainer>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
