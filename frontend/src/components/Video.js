@@ -15,9 +15,6 @@ const Video = ({ video }) => {
                 <Card.Text as='div'>
                     <div className='my-3'>{video.date}</div>
                 </Card.Text>
-                <Link to={`${video.link}`} >
-                    <div className='my-3'>Go to video</div>
-                </Link>
             </Card.Body>
         </Card >
     )

@@ -4,7 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 const Header = () => {
     return (
         <header>
-            <Navbar bg="dark" variant='dark' expand="lg" collapseOnSelect>
+            <Navbar bg="primary" variant='dark' expand="lg" collapseOnSelect>
                 <Container>
                     <LinkContainer to='/'>
                         <Navbar.Brand>RPA</Navbar.Brand>
