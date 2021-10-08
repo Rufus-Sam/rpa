@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Row, Col, Button, Image, OverlayTrigger, Tooltip, ListGroup } from 'react-bootstrap'
+import { Row, Col, Button, Image, ListGroup } from 'react-bootstrap'
 import axios from 'axios'
 const VideoScreen = ({ match }) => {
     const [video, setVideo] = useState({})
@@ -27,15 +27,7 @@ const VideoScreen = ({ match }) => {
                         <ListGroup>
                             <ListGroup.Item>
                                 <div className="d-grid gap-2">
-                                    <OverlayTrigger
-                                        overlay={
-                                            <Tooltip id={`tooltip-top`} >
-                                                Watch {video.name}
-                                            </Tooltip>
-                                        }
-                                    >
-                                        <Button variant="secondary" size="lg" >Join us in worshipping the Lord</Button>
-                                    </OverlayTrigger>
+                                    <Button variant="secondary" size="lg" >Join us in worshipping the Lord</Button>
                                 </div>
                             </ListGroup.Item>
                             <ListGroup.Item>
