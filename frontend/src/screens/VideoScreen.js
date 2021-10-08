@@ -1,10 +1,18 @@
-import React from 'react'
-import videos from '../videos'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Row, Col, Button, Image, OverlayTrigger, Tooltip, ListGroup } from 'react-bootstrap'
+import axios from 'axios'
 const VideoScreen = ({ match }) => {
-    const video = videos.find((x) => x._id === match.params.id)
+    const [video, setVideo] = useState({})
 
+    useEffect(() => {
+        const fetchVideo = async () => {
+            const { data } = await axios.get(`/api/videos/${match.params.id}`)
+
+            setVideo(data)
+        }
+        fetchVideo()
+    }, [match])
     return (
         <>
             <Link className='btn btn-light my-3' to='/'>

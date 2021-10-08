@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import Video from '../components/Video'
-import videos from '../videos'
-const HomeScreen = () => {
+import axios from 'axios'
 
+const HomeScreen = () => {
+    const [videos, setVideos] = useState([])
+
+    useEffect(() => {
+        const fetchVideos = async () => {
+            const { data } = await axios.get('/api/videos')
+            setVideos(data)
+        }
+        fetchVideos()
+    }, [])
     return (
         <>
             <h1>Our Latest works</h1>
