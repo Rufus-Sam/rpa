@@ -1,5 +1,6 @@
 import express from 'express'
 import dotenv from 'dotenv'
+import colors from 'colors'
 import connectDb from './config/db.js'
 import videos from './data/videos.js'
 
@@ -19,4 +20,4 @@ app.get('/api/videos/:id', (req, res) => {
 })
 const PORT = process.env.PORT || 5000
 const mode = process.env.NODE_ENV
-app.listen(PORT, console.log(`Server running on port ${PORT} in ${mode} mode`))
+app.listen(PORT, console.log(`Server running on port ${PORT} in ${mode} mode`.yellow.bold))
