@@ -49,4 +49,4 @@ const videos = [
     }
 ]
 
-module.exports = videos
+export default videos
