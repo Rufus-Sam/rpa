@@ -1,9 +1,10 @@
 import express from 'express'
 import dotenv from 'dotenv'
+import connectDb from './config/db.js'
 import videos from './data/videos.js'
 
-
 dotenv.config()
+connectDb()
 const app = express()
 
 app.get('/', (req, res) => {
