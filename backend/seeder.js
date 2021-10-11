@@ -5,43 +5,37 @@ import users from './data/users.js'
 import videos from './data/videos.js'
 import User from './models/userModel.js'
 import Video from './models/videoModel.js'
+import asyncHandler from 'express-async-handler'
 import dotenv from 'dotenv'
 
 dotenv.config()
 connectDb()
 
-const importData = async () => {
-    try {
-        await User.deleteMany()
-        await Video.deleteMany()
+const importData = asyncHandler(async () => {
 
-        const createdUsers = await User.insertMany(users)
+    await User.deleteMany()
+    await Video.deleteMany()
 
-        const adminUser = createdUsers[0]._id
-        const sampleVideos = videos.map((video) => {
-            return { ...video, user: adminUser }
-        })
-        await Video.insertMany(sampleVideos)
+    const createdUsers = await User.insertMany(users)
 
-        console.log("Data Imported".green.inverse)
-        process.exit()
-    } catch (error) {
-        console.log(`${error}`.red.inverse)
-        process.exit(1)
-    }
-}
-const deleteData = async () => {
-    try {
-        await User.deleteMany()
-        await Video.deleteMany()
+    const adminUser = createdUsers[0]._id
+    const sampleVideos = videos.map((video) => {
+        return { ...video, user: adminUser }
+    })
+    await Video.insertMany(sampleVideos)
 
-        console.log("Data Deleted".green.inverse)
-        process.exit()
-    } catch (error) {
-        console.log(`${error}`.red.inverse)
-        process.exit(1)
-    }
-}
+    console.log("Data Imported".green.inverse)
+    process.exit()
+})
+const deleteData = asyncHandler(async () => {
+
+    await User.deleteMany()
+    await Video.deleteMany()
+
+    console.log("Data Deleted".green.inverse)
+    process.exit()
+
+})
 
 if (process.argv[2] === '-d') {
     deleteData()
