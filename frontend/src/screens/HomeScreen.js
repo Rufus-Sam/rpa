@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Col, Row } from 'react-bootstrap'
 import Video from '../components/Video'
 import { listVideos } from '../actions/videoActions'
+import Loader from '../components/Loader'
+import Message from '../components/Message'
 
 const HomeScreen = () => {
     const dispatch = useDispatch()
@@ -18,9 +20,9 @@ const HomeScreen = () => {
         <>
             <h1>Our Latest works</h1>
             {loading ? (
-                <h1>Loading </h1>
+                <Loader />
             ) : error ? (
-                <h1>error</h1>
+                <Message variant='danger'>{error}</Message>
             ) : (
                 <Row>
                     {videos.map((video) => (
