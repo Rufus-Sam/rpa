@@ -1,8 +1,11 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
+import { videoListReducer } from './reducers/videoReducers'
 
-const reducer = combineReducers({})
+const reducer = combineReducers({
+    videoList: videoListReducer,
+})
 
 const middleware = [thunk]
 
