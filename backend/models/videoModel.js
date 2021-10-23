@@ -19,7 +19,7 @@ const videoSchema = mongoose.Schema({
         required: true
     },
     date: {
-        type: Date
+        type: String
     },
     link: {
         type: String,
